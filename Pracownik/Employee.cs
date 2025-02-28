@@ -62,6 +62,34 @@ namespace Pracownik
             }
         }
 
+        public void NowaOcena(char pojOcena)
+        {
+            switch (pojOcena)
+            {
+                case 'A':
+                case 'a':
+                    this.Oceny.Add(100);
+                    break;
+                case 'B':
+                case 'b':
+                    this.Oceny.Add(80);
+                    break;
+                case 'C':
+                    this.Oceny.Add(60);
+                    break;
+                case 'D':
+                    this.Oceny.Add(40);
+                    break;
+                case 'E':
+                    this.Oceny.Add(20);
+                    break;
+                default:
+                    Console.WriteLine("Niepoprawna wartość");
+                    break;
+            }
+
+        }
+
         public Statystyki GetStatystyki()
         {
             var statystyki = new Statystyki();
@@ -76,6 +104,28 @@ namespace Pracownik
                 statystyki.Srednia += ocenka;
 
             }
+            statystyki.Srednia /= this.Oceny.Count;
+
+            switch (statystyki.Srednia)
+            {
+                case var a when a >= 80:
+                    statystyki.SredniaLitera = 'A';
+                    break;
+                case var a when a >= 60:
+                    statystyki.SredniaLitera = 'B';
+                    break;
+                case var a when a >= 40:
+                    statystyki.SredniaLitera = 'C';
+                    break;
+                case var a when a >= 20:
+                    statystyki.SredniaLitera = 'D';
+                    break;
+                default:
+                    statystyki.SredniaLitera = 'E';
+                    break;
+
+            }
+
 
             return statystyki;
         }

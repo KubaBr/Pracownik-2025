@@ -12,6 +12,7 @@ namespace Pracownik
         public float Max { get; set; }
         public float Srednia { get; set; }
 
+        public char SredniaLitera { get; set; }
 
 
     }

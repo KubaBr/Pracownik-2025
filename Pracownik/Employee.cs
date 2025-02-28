@@ -19,7 +19,47 @@ namespace Pracownik
 
         public void NowaOcena(float pojOcena)
         {
-            this.Oceny.Add(pojOcena);
+            if (pojOcena >= 0 && pojOcena <= 100)
+            {
+                this.Oceny.Add(pojOcena);
+            }
+            else
+            {
+                Console.WriteLine("Błędna ocena");
+            }
+        }
+
+        public void NowaOcena(double pojOcena)
+        {
+            if (pojOcena <= float.MaxValue)
+            {
+                float value = (float)pojOcena;
+                this.NowaOcena(value);
+            }
+            else
+            {
+                Console.WriteLine("Liczba jest zbyt duża");
+            }
+
+
+        }
+
+        public void NowaOcena(int pojOcena)
+        {
+            float value = (int)pojOcena;
+            this.NowaOcena(value);
+        }
+        // dodać metodę NowaOcena long, 
+        public void NowaOcena(string pojOcena)
+        {
+            if (float.TryParse(pojOcena, out float value))
+            {
+                this.NowaOcena(value);
+            }
+            else
+            {
+                Console.WriteLine("String nie jest zmiennoprzecinkowy.");
+            }
         }
 
         public Statystyki GetStatystyki()
@@ -36,8 +76,6 @@ namespace Pracownik
                 statystyki.Srednia += ocenka;
 
             }
-            //statystyki.Srednia = statystyki.Srednia / this.Oceny.Count; // to samo co niżej
-            statystyki.Srednia /=  this.Oceny.Count;
 
             return statystyki;
         }

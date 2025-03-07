@@ -10,7 +10,7 @@ namespace Pracownik.Tests
 
             // arrange
             var mietek = new Employee("Mierczas", "Miroslawski");
-            
+
             mietek.NowaOcena(5);
             mietek.NowaOcena(7);
             var statystyki = mietek.GetStatystyki();
@@ -55,7 +55,28 @@ namespace Pracownik.Tests
             var result = stastystyki.Srednia;
 
             //assert
-            Assert.AreEqual(6,result); 
+            Assert.AreEqual(6, result);
+        }
+
+        [Test]
+        public void WhenAddLetter_ShouldSumScoreToSum()
+        {
+
+            //arrange
+            var marek = new Employee("Marek", "Marecki");
+            marek.NowaOcena("A");
+            marek.NowaOcena('c');
+
+            var statystyki = marek.GetStatystyki();
+
+            //act
+
+            var result = statystyki.Srednia;
+
+            //assert
+            Assert.AreEqual(80, result);
+
+
         }
     }
 }

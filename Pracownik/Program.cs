@@ -12,13 +12,22 @@ Console.WriteLine("Wprowadź ocenę pracownika: ");
 
 while (true)
 {
-    
+
     var input = Console.ReadLine();
 
     if (input == "q")
     {
         break;
     }
+    try
+    {
+
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Exeption catched: {e.Message}");
+    }
+
     pracownik.NowaOcena(input);
     Console.WriteLine("Wprowadź kolejną ocenę pracownika. Aby przerwać kliknij q ");
 

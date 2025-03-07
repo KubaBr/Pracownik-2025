@@ -4,17 +4,26 @@ namespace Pracownik
 {
     public class Employee
     {
+
         public string Imie { get; set; }
         public string Nazwisko { get; set; }
+        public string Stanowisko { get; set; }
 
         private List<float> Oceny = new List<float>();
-
-
 
         public Employee(string imie, string nazwisko)
         {
             this.Imie = imie;
             this.Nazwisko = nazwisko;
+
+        }
+
+        public Employee(string imie, string nazwisko, string stanowisko)
+        // : base(imie, nazwisko, plec)
+        {
+            this.Imie = imie;
+            this.Nazwisko = nazwisko;
+            this.Stanowisko = stanowisko;
         }
 
         public void NowaOcena(float pojOcena)
@@ -25,7 +34,8 @@ namespace Pracownik
             }
             else
             {
-                Console.WriteLine("Błędna ocena");
+                //Console.WriteLine("Błędna ocena");
+                throw new Exception("Błędna ocena");
             }
         }
 
@@ -38,7 +48,8 @@ namespace Pracownik
             }
             else
             {
-                Console.WriteLine("Liczba jest zbyt duża");
+                throw new Exception("Liczba jest zbyt duża");
+                //Console.WriteLine("Liczba jest zbyt duża");
             }
 
 
@@ -56,9 +67,15 @@ namespace Pracownik
             {
                 this.NowaOcena(value);
             }
+            else if (char.TryParse(pojOcena, out char znak))
+            {
+                this.NowaOcena(znak);
+            }
+
             else
             {
-                Console.WriteLine("String nie jest zmiennoprzecinkowy.");
+                throw new Exception("String nie jest zmiennoprzecinkowy.");
+                //Console.WriteLine("String nie jest zmiennoprzecinkowy.");
             }
         }
 
@@ -75,17 +92,22 @@ namespace Pracownik
                     this.Oceny.Add(80);
                     break;
                 case 'C':
+                case 'c':
                     this.Oceny.Add(60);
                     break;
                 case 'D':
+                case 'd':
                     this.Oceny.Add(40);
                     break;
                 case 'E':
+                case 'e':
                     this.Oceny.Add(20);
                     break;
                 default:
-                    Console.WriteLine("Niepoprawna wartość");
-                    break;
+                    throw new Exception("Niepoprawna wartość");
+                    //Console.WriteLine("Niepoprawna wartość");
+
+
             }
 
         }

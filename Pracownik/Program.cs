@@ -1,6 +1,6 @@
 ﻿using Pracownik;
 
-var pracownik = new Employee("Kuba", "Brózda");
+var pracownik = new Kierownik("Kuba", "Brózda");
 //pracownik.NowaOcena(5);
 //pracownik.NowaOcena(7);
 //pracownik.NowaOcena('A');

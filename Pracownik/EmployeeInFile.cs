@@ -117,6 +117,7 @@
 
             else
             {
+
                 throw new Exception("String nie jest zmiennoprzecinkowy.");
                 //Console.WriteLine("String nie jest zmiennoprzecinkowy.");
             }

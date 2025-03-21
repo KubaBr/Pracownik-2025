@@ -1,6 +1,6 @@
 ﻿using Pracownik;
 
-var pracownik = new Kierownik("Kuba", "Brózda");
+var pracownik = new EmployeeInFile("Kuba", "Brózda");
 //pracownik.NowaOcena(5);
 //pracownik.NowaOcena(7);
 //pracownik.NowaOcena('A');
@@ -10,9 +10,17 @@ Console.WriteLine("=========================");
 Console.WriteLine("");
 Console.WriteLine("Wprowadź ocenę pracownika: ");
 
+pracownik.DodanoNowaOcene += PracownikOcenaDodana;
+
+void PracownikOcenaDodana(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano ocene!");
+}
+
+
 while (true)
 {
-
+ 
     var input = Console.ReadLine();
 
     if (input == "q")
@@ -32,6 +40,7 @@ while (true)
     Console.WriteLine("Wprowadź kolejną ocenę pracownika. Aby przerwać kliknij q ");
 
 }
+
 var statystyki = pracownik.GetStatystyki();
 Console.WriteLine("Maksymalna wartość: " + statystyki.Max);
 Console.WriteLine($"Minimalna wartość:  {statystyki.Min}"); // interpolacja
